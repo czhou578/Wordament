@@ -1,0 +1,76 @@
+#board {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  position: absolute;
+  top: 200px;
+  right: 700px;
+  height: 600px;
+  width: 530px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.wordsquare {
+  background-color: lightgreen;
+  border: 1px solid blue;
+  font-size: 30px;
+  padding-top: 45px;
+  padding-right: 5px;
+  text-align: center;
+  z-index: 1;
+}   
+
+#timeclock {
+  height: 89px;
+  width: 350px;
+  background-color: yellow;
+  position: absolute;
+  top: 100px;
+  left: 500px;
+}
+
+#scoreboard {
+  height: 89px;
+  width: 350px;
+  background-color: tan;
+  position: absolute;
+  top: 100px;
+  right: 500px;
+}
+
+p1 {
+  position: relative;
+  font-size: 45px;
+  margin-left: 65px;
+  text-align: center;
+  bottom: 67px;
+  left: 60px;
+}
+
+p2 {
+  position: relative;
+  font-size: 45px;
+  margin-left: 90px;
+  text-align: center;
+  bottom: 75px;
+  left: 60px;
+
+}
+
+h1 {
+  position: relative;
+  bottom: 65px;
+  left: 55px;
+}
+
+h2 {
+  position: relative;
+  bottom: 70px;
+  left: 85px;
+  font-size: 32px;
+}
+
+
+
+
+
