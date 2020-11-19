@@ -79,6 +79,7 @@ var page = document.getElementById("page");
 var scoring = document.getElementById('score');
 var mousedown;
 var selectedLetters = new Array(16);
+var correctWords = new Set();
 let squaresUsed = 0;
 var score = 0;
 
@@ -125,7 +126,6 @@ for (let i = 0; i < square.length; i++) {
     e.preventDefault();
     square[i].style.backgroundColor = "orange";
     selectedLetters[0] = square[i];
-    //console.log(square[i].innerHTML);
     squaresUsed++;
     
   });
@@ -134,7 +134,6 @@ for (let i = 0; i < square.length; i++) {
     if (mousedown == true) {
       square[i].style.backgroundColor = "orange";
       if (e.target.nodeName == "DIV") {
-        //console.log(e.target.innerHTML);
         selectedLetters[squaresUsed] = e.target;
         squaresUsed++;
       }
@@ -144,9 +143,8 @@ for (let i = 0; i < square.length; i++) {
   square[i].addEventListener("mouseup", function(e) {
     mousedown = false;
     
-    if (e.target.id != "board" && e.target.nodeName != "DIV") { //needds fix
+    if (e.target.id != "board" && e.target.nodeName != "DIV") {
       for (let i = 0; i < squaresUsed; i++) {
-        //console.log(selectedLetters[i].innerHTML);
         selectedLetters[i].style.backgroundColor = "lightgreen";
       } 
     }
@@ -154,8 +152,11 @@ for (let i = 0; i < square.length; i++) {
     if (isLoaded == false) {
       allGreen();
 
-    } else if (loadedWordString.includes(resultWordString())) { //fix later
-      //console.log(selectedLetters.join())
+    } else if (correctWords.has(resultWordString())) {
+      allGreen();
+
+    } else if (loadedWordString.includes(resultWordString()) && !correctWords.has(resultWordString())) { //fix later
+      correctWords.add(resultWordString());
 
       if (squaresUsed == 1) {
         squaresUsed = 0;
@@ -163,6 +164,7 @@ for (let i = 0; i < square.length; i++) {
       }
 
       for (let i = 0; i < squaresUsed; i++) { //process the words here
+
         if (vowelString.includes(selectedLetters[i].innerHTML)) {
           score += 3;
         } else if (consonantString.includes(selectedLetters[i].innerHTML)) {
@@ -173,6 +175,7 @@ for (let i = 0; i < square.length; i++) {
       } 
 
     } else if (!loadedWordString.includes(selectedLetters.join())) {
+
       allGreen();
     }
     squaresUsed = 0;
