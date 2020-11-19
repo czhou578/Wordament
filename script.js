@@ -1,8 +1,6 @@
 const timerElement = document.getElementById('timer');
 const starting = 3;
-//const starting = 1;
 let time = starting * 60; //seconds
-//let time = starting * 10;
 
 function update() { //update the clock
   const minutes = Math.floor(time / 60);
