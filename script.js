@@ -1,12 +1,21 @@
-const starting = 3;
-let time = starting * 60; //seconds
 const timerElement = document.getElementById('timer');
+const starting = 3;
+//const starting = 1;
+let time = starting * 60; //seconds
+//let time = starting * 10;
 
 function update() { //update the clock
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
-  timerElement.innerHTML = `${minutes}: ${seconds}`;
-  seconds = seconds < 10 ? "10" + seconds : seconds;
+  if (seconds == 0) {
+    timerElement.innerHTML = `${minutes}:${0}${0}`;
+  } else if (seconds < 10 && seconds > 0) {
+    timerElement.innerHTML = `${minutes}:${0}${seconds}`;
+  } 
+  else {
+    timerElement.innerHTML = `${minutes}:${seconds}`;
+    seconds = seconds < 10 ? "10" + seconds : seconds;
+  }
 
   if (minutes < 0) {
     timerElement.innerHTML = "Time's Up!";
@@ -148,7 +157,13 @@ for (let i = 0; i < square.length; i++) {
       allGreen();
 
     } else if (loadedWordString.includes(resultWordString())) { //fix later
-      console.log(selectedLetters.join())
+      //console.log(selectedLetters.join())
+
+      if (squaresUsed == 1) {
+        squaresUsed = 0;
+        selectedLetters[0].style.backgroundColor = "lightgreen";
+      }
+
       for (let i = 0; i < squaresUsed; i++) { //process the words here
         if (vowelString.includes(selectedLetters[i].innerHTML)) {
           score += 3;
@@ -163,6 +178,7 @@ for (let i = 0; i < square.length; i++) {
       allGreen();
     }
     squaresUsed = 0;
+
   });
   selectedLetters = [];
 }
