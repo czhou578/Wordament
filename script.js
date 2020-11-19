@@ -15,7 +15,7 @@ function update() { //update the clock
   time--;
 }
 
-//var board = document.getElementById("board");
+var board = document.getElementById("board");
 var letterSquares = board.getElementsByTagName('div'); //div elements
 var arrayOfGenLetters = Array.prototype.slice.call(letterSquares); //array of div elements
 
@@ -63,17 +63,25 @@ function loadWord() { //loads the word bank file into the program
 
 loadWord();
 
-// function getCoordinates(e) {
-  //   console.log(e.clientX);
-  //   console.log(e.clientY);
-  
-  // }
 var square = document.getElementsByClassName('wordsquare');
+var page = document.getElementById("page");
 var scoring = document.getElementById('score');
+var touchedBoard = false;
 let mousedown;
 var selectedLetters = new Array(16);
 let squaresUsed = 0;
 var score = 0;
+
+page.onmouseleave = leftBoard;
+
+function leftBoard() {
+  for (let i = 0; i < squaresUsed; i++) {
+    selectedLetters[i].style.backgroundColor = "lightgreen";
+  } 
+  squaresUsed = 0;
+  mousedown = false;
+}
+
 
 //mouse events start here
 for (let i = 0; i < square.length; i++) {
@@ -81,37 +89,34 @@ for (let i = 0; i < square.length; i++) {
   square[i].addEventListener("mousedown", function(e) {
     mousedown = true;
     e.preventDefault();
-
-    
     square[i].style.backgroundColor = "orange";
     selectedLetters[0] = square[i];
-    console.log(squaresUsed);
+    console.log(square[i].innerHTML);
     squaresUsed++;
     
   });
 
   square[i].addEventListener("mouseover", function(e) {
-    var divIdentify = document.getElementsByTagName("DIV").id;
     if (mousedown == true) {
       square[i].style.backgroundColor = "orange";
       if (e.target.nodeName == "DIV") {
+        console.log(e.target.innerHTML);
         selectedLetters[squaresUsed] = e.target;
         squaresUsed++;
-      } 
+      }
     }
   });
   
   square[i].addEventListener("mouseup", function(e) {
-
     mousedown = false;
-
-    if (e.target.id == "board") { 
+    
+    if (e.target.id != "board" && e.target.nodeName != "DIV") { //needds fix
       for (let i = 0; i < squaresUsed; i++) {
         console.log(selectedLetters[i].innerHTML);
         selectedLetters[i].style.backgroundColor = "lightgreen";
       } 
     }
-    console.log(squaresUsed);
+    
     for (let i = 0; i < squaresUsed; i++) {
       if (isLoaded == false) {
         selectedLetters[i].style.backgroundColor = "lightgreen";
