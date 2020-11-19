@@ -1,6 +1,5 @@
 const starting = 3;
 let time = starting * 60; //seconds
-
 const timerElement = document.getElementById('timer');
 
 function update() { //update the clock
@@ -18,9 +17,9 @@ function update() { //update the clock
 var board = document.getElementById("board");
 var letterSquares = board.getElementsByTagName('div'); //div elements
 var arrayOfGenLetters = Array.prototype.slice.call(letterSquares); //array of div elements
-
 var vowelString = "aeiou".toUpperCase();
 var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
+
 function letterGenerator() { //generate the letters
   
   const vowelDivInt = new Set(); //unique set representing divs
@@ -47,6 +46,8 @@ function letterGenerator() { //generate the letters
 letterGenerator();
 
 var isLoaded = false;
+var loadedWordString = "";
+var arrayWords;
 function loadWord() { //loads the word bank file into the program
   document.getElementById('inputFile').addEventListener('change', function() {
     var reader = new FileReader();
@@ -55,7 +56,9 @@ function loadWord() { //loads the word bank file into the program
     
     reader.onload = function() {
       let temp = reader.result;
-      var string = temp.split('\n'); //array of words!
+      arrayWords = temp.split('\n'); //array of words!
+      loadedWordString = arrayWords.toString().toUpperCase();
+      console.log(loadedWordString); //converts it into a string
     }
     setInterval(update, 1000);
   })
@@ -64,10 +67,10 @@ function loadWord() { //loads the word bank file into the program
 loadWord();
 
 var square = document.getElementsByClassName('wordsquare');
+var board = document.getElementById("board");
 var page = document.getElementById("page");
 var scoring = document.getElementById('score');
-var touchedBoard = false;
-let mousedown;
+var mousedown;
 var selectedLetters = new Array(16);
 let squaresUsed = 0;
 var score = 0;
@@ -82,6 +85,30 @@ function leftBoard() {
   mousedown = false;
 }
 
+board.onmouseup  = touchedBoard;
+
+function touchedBoard() {
+  for (let i = 0; i < squaresUsed; i++) {
+    selectedLetters[i].style.backgroundColor = "lightgreen";
+  }
+  squaresUsed = 0;
+  mousedown = false;
+}
+
+function allGreen() { //utility function
+  for (let j = 0; j < squaresUsed; j++) {
+    selectedLetters[j].style.backgroundColor = "lightgreen";
+  }
+}
+
+function resultWordString() {
+  var resultStr = "";
+  for (let i = 0; i < squaresUsed; i++) {
+    resultStr += selectedLetters[i].innerHTML;
+  }
+  console.log(resultStr)
+  return resultStr;
+}
 
 //mouse events start here
 for (let i = 0; i < square.length; i++) {
@@ -91,7 +118,7 @@ for (let i = 0; i < square.length; i++) {
     e.preventDefault();
     square[i].style.backgroundColor = "orange";
     selectedLetters[0] = square[i];
-    console.log(square[i].innerHTML);
+    //console.log(square[i].innerHTML);
     squaresUsed++;
     
   });
@@ -100,7 +127,7 @@ for (let i = 0; i < square.length; i++) {
     if (mousedown == true) {
       square[i].style.backgroundColor = "orange";
       if (e.target.nodeName == "DIV") {
-        console.log(e.target.innerHTML);
+        //console.log(e.target.innerHTML);
         selectedLetters[squaresUsed] = e.target;
         squaresUsed++;
       }
@@ -112,15 +139,17 @@ for (let i = 0; i < square.length; i++) {
     
     if (e.target.id != "board" && e.target.nodeName != "DIV") { //needds fix
       for (let i = 0; i < squaresUsed; i++) {
-        console.log(selectedLetters[i].innerHTML);
+        //console.log(selectedLetters[i].innerHTML);
         selectedLetters[i].style.backgroundColor = "lightgreen";
       } 
     }
     
-    for (let i = 0; i < squaresUsed; i++) {
-      if (isLoaded == false) {
-        selectedLetters[i].style.backgroundColor = "lightgreen";
-      } else {
+    if (isLoaded == false) {
+      allGreen();
+
+    } else if (loadedWordString.includes(resultWordString())) { //fix later
+      console.log(selectedLetters.join())
+      for (let i = 0; i < squaresUsed; i++) { //process the words here
         if (vowelString.includes(selectedLetters[i].innerHTML)) {
           score += 3;
         } else if (consonantString.includes(selectedLetters[i].innerHTML)) {
@@ -128,7 +157,10 @@ for (let i = 0; i < square.length; i++) {
         }
         scoring.innerHTML = score;
         selectedLetters[i].style.backgroundColor = "lightgreen";
-      }
+      } 
+
+    } else if (!loadedWordString.includes(selectedLetters.join())) {
+      allGreen();
     }
     squaresUsed = 0;
   });
