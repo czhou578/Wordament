@@ -5,10 +5,11 @@
 
 #demoRules {
   margin-left: 150px;
-  height: 45px;
-  width: 45px;
+  /* height: 45px;
+  width: 45px; */
   position: relative;
   left: 15px;
+  top: 150px;
 
 }
 
@@ -66,18 +67,12 @@ p {
 }   
 
 #timeclock {
-  height: 89px;
-  width: 350px;
-  background-color: rgb(255, 148, 9);
   position: absolute;
   top: 100px;
   left: 650px;
 }
 
 #scoreboard {
-  height: 89px;
-  width: 350px;
-  background-color: tan;
   position: absolute;
   top: 100px;
   right: 500px;
@@ -106,6 +101,7 @@ h1 {
   position: relative;
   bottom: 65px;
   left: 55px;
+  color: rgb(12, 9, 146);
 }
 
 h2 {
@@ -113,11 +109,29 @@ h2 {
   bottom: 70px;
   left: 85px;
   font-size: 32px;
+  color: rgb(12, 9, 146);
 }
 
 .link {
   margin-top: 50px;
   margin-left: 100px;
+}
+
+.link > a {
+  font-size: 20px;
+}
+
+#welcome {
+  margin-left: 5%;
+  font-size: 40px;
+  color: green;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+span {
+  font-size: 15px;
 }
 
 

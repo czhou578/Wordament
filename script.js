@@ -1,5 +1,5 @@
 const timerElement = document.getElementById('timer');
-const starting = 3;
+const starting = 2;
 let time = starting * 60; //seconds
 
 function update() { //update the clock
@@ -17,6 +17,7 @@ function update() { //update the clock
 
   if (minutes < 0) {
     timerElement.innerHTML = "Time's Up!";
+    timerElement.style.position = "relative"
   }
   time--;
 }

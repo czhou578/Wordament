@@ -5,57 +5,57 @@
 </header>
 
 <body id="page">
-
-  <div class="topNav">
-    <a href="#"> Instructions</a>
-    <a href="#"> About Creator</a>
-  </div>
-
+  <div id="welcome">Welcome to Wordament!</div>
   <div class="demoRules">
     <p>This is Wordament. Click to insert a local text file of your choice. Wait <br>
-    fpr the timer to start. Click and drag across the board <br>
+    for the timer to start. Click and drag across the board <br>
     to select words. Each letter that you select in either direction <br>
     will accumulate for points, which will be shown up in the scoreboard. <br>
     There is a timer that counts down the time, so make sure you look quickly <br>
     and try to find as many words as possible! When the timer runs out, refresh <br>
-    the page for a new game! </p>
+    the page for a new game! You will find a list of 10k words. Download <br> into a text file, then upload.</p>
     <div class="link">
-      <span>You will find a list of 10k words. Download <br> into a text file, then upload.</span>
       <div>
-        <a href="C:\Users\mycol\OneDrive\Documents\10k words.txt" download>Go to Site</a>
+        <span style="font-size:1.6em;">
+          <a href="C:\Users\mycol\OneDrive\Documents\10k words.txt" download>Go to Site</a>
+        </span>
         <input type="file" name="inputFile" id="inputFile">
 
       </div>
     </div>
+    <div>
+      <div id="timeclock">
+        <h1>Game Time Remaining</h1>
+        <p1 id="timer"> 2:00 </p1>
+      </div>
+      <div id="scoreboard">
+        <h2> Scoreboard </h2>
+        <p2 id="score"> 0 </p2>  
+      </div>
+      <div id="board">
+        <div class="wordsquare">A</div>
+        <div class="wordsquare">B</div>
+        <div class="wordsquare">V</div>
+        <div class="wordsquare">D</div>
+        <div class="wordsquare">A</div>
+        <div class="wordsquare">E</div>
+        <div class="wordsquare">K</div>
+        <div class="wordsquare">L</div>
+        <div class="wordsquare">P</div>
+        <div class="wordsquare">O</div>
+        <div class="wordsquare">W</div>
+        <div class="wordsquare">E</div>
+        <div class="wordsquare">R</div>
+        <div class="wordsquare">E</div>
+        <div class="wordsquare">A</div>
+        <div class="wordsquare">N</div>
+        
+      </div>
+  
+    </div>
   </div>
 
-  <div id="timeclock">
-    <h1>Time Remaining</h1>
-    <p1 id="timer"> 3:00 </p1>
-  </div>
-  <div id="scoreboard">
-    <h2> Scoreboard </h2>
-    <p2 id="score"> 0 </p2>  
-  </div>
-  <div id="board">
-    <div class="wordsquare">A</div>
-    <div class="wordsquare">B</div>
-    <div class="wordsquare">V</div>
-    <div class="wordsquare">D</div>
-    <div class="wordsquare">A</div>
-    <div class="wordsquare">E</div>
-    <div class="wordsquare">K</div>
-    <div class="wordsquare">L</div>
-    <div class="wordsquare">P</div>
-    <div class="wordsquare">O</div>
-    <div class="wordsquare">W</div>
-    <div class="wordsquare">E</div>
-    <div class="wordsquare">R</div>
-    <div class="wordsquare">E</div>
-    <div class="wordsquare">A</div>
-    <div class="wordsquare">N</div>
-    
-  </div>
+
   <script src="C:\Users\mycol\WEB PROJECTS\Wordament\Wordament\script.js"> </script>
 
 </body>
