@@ -14,6 +14,7 @@
 
 p {
   padding: 15px;
+  font-size: 20px;
 }
 
 #inputFile {
@@ -70,7 +71,7 @@ p {
   background-color: rgb(255, 148, 9);
   position: absolute;
   top: 100px;
-  left: 500px;
+  left: 650px;
 }
 
 #scoreboard {
@@ -112,6 +113,11 @@ h2 {
   bottom: 70px;
   left: 85px;
   font-size: 32px;
+}
+
+.link {
+  margin-top: 50px;
+  margin-left: 100px;
 }
 
 
