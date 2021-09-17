@@ -1,3 +1,9 @@
+import { useDispatch } from "react-redux";
+import * as actionType from './actions/index'
+
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const dispatch = useDispatch()
+
 const timerElement = document.getElementById('timer');
 const starting = 2;
 let time = starting * 60; //seconds
@@ -61,12 +67,12 @@ function loadWord() { //loads the word bank file into the program
     var reader = new FileReader();
     reader.readAsText(this.files[0]);
     isLoaded = true;
+    dispatch(actionType.fileUploaded())
     
     reader.onload = function() {
       let temp = reader.result;
       arrayWords = temp.split('\n'); //array of words!
       loadedWordString = arrayWords.toString().toUpperCase();
-      console.log(loadedWordString); //converts it into a string
     }
     setInterval(update, 1000);
   })
