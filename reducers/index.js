@@ -1,6 +1,9 @@
 
 import { combineReducers } from "redux";
-// const allReducers =   
+
+export const allReducers = combineReducers({
+  didFileUpload = reducer
+})
 
 const reducer = (state = {value: false}, action) => {
   switch(action.type) {
