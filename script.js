@@ -87,7 +87,7 @@ var mousedown; //done
 var selectedLetters = new Array(16); //done off.
 let squaresUsed = 0; //done
 
-// page.onmouseleave = leftBoard;
+page.onmouseleave = leftBoard;
 
 function leftBoard() {
   for (let i = 0; i < squaresUsed; i++) {
