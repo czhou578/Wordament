@@ -2,7 +2,6 @@
 const timerElement = document.getElementById('timer');
 const starting = 2;
 let time = starting * 60; //seconds
-
 function update() { //update the clock
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
@@ -54,6 +53,10 @@ function letterGenerator() { //generate the letters
 
 letterGenerator();
 
+
+
+
+
 var isLoaded = false;
 var loadedWordString = "";
 var arrayWords;
@@ -73,6 +76,10 @@ function loadWord() { //loads the word bank file into the program
 }
 
 loadWord();
+
+
+
+
 
 var square = document.getElementsByClassName('wordsquare');
 var board = document.getElementById("board");
@@ -94,7 +101,7 @@ function leftBoard() {
   mousedown = false;
 }
 
-board.onmouseup  = touchedBoard;
+board.onmouseup  = leftBoard;
 
 function touchedBoard() {
   for (let i = 0; i < squaresUsed; i++) {
@@ -120,6 +127,8 @@ function resultWordString() {
 }
 
 //mouse events start here
+
+
 for (let i = 0; i < square.length; i++) {
   
   square[i].addEventListener("mousedown", function(e) {
