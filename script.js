@@ -101,7 +101,7 @@ function leftBoard() {
   mousedown = false;
 }
 
-board.onmouseup  = leftBoard;
+board.onmouseup  = touchedBoard;
 
 function touchedBoard() {
   for (let i = 0; i < squaresUsed; i++) {
