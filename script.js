@@ -81,17 +81,13 @@ loadWord();
 
 
 
-var square = document.getElementsByClassName('wordsquare');
-var board = document.getElementById("board");
+var board = document.getElementById("board"); //done off.
 var page = document.getElementById("page");
-var scoring = document.getElementById('score');
-var mousedown;
-var selectedLetters = new Array(16);
-var correctWords = new Set();
-let squaresUsed = 0;
-var score = 0;
+var mousedown; //done
+var selectedLetters = new Array(16); //done off.
+let squaresUsed = 0; //done
 
-page.onmouseleave = leftBoard;
+// page.onmouseleave = leftBoard;
 
 function leftBoard() {
   for (let i = 0; i < squaresUsed; i++) {
@@ -128,6 +124,10 @@ function resultWordString() {
 
 //mouse events start here
 
+var square = document.getElementsByClassName('wordsquare');
+var scoring = document.getElementById('score'); //update score
+var correctWords = new Set();
+var score = 0;
 
 for (let i = 0; i < square.length; i++) {
   
